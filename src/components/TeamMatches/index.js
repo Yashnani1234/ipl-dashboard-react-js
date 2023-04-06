@@ -3,6 +3,7 @@ import Loader from 'react-loader-spinner'
 
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
+import Home from '../Home'
 
 import './index.css'
 
@@ -47,7 +48,7 @@ class TeamMatches extends Component {
       ),
     }
 
-    this.setState({teamMatchesData: formattedData, isLoading: true})
+    this.setState({teamMatchesData: formattedData, isLoading: false})
   }
 
   renderRecentMatchesList = () => {
@@ -109,6 +110,10 @@ class TeamMatches extends Component {
     }
   }
 
+  onClickBack = () => {
+    ;<Home />
+  }
+
   render() {
     const {isLoading} = this.state
     const className = `team-matches-container ${this.getRouteClassName()}`
@@ -116,6 +121,9 @@ class TeamMatches extends Component {
     return (
       <div className={className}>
         {isLoading ? this.renderLoader() : this.renderTeamMatches()}
+        <button type="button" onClick={this.onClickBack}>
+          Back
+        </button>
       </div>
     )
   }
